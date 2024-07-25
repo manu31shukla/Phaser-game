@@ -1,18 +1,13 @@
 import Phaser from 'phaser';
-
-export default class TitleScreen extends Phaser.Scene {
-    constructor() {
-        super('TitleScreen');
-    }
+class TitleScreen extends Phaser.Scene {
 
     preload() {
-        this.load.image('title', 'assets/title.png');
     }
 
     create() {
-        this.add.image(400, 250, 'title');
-        this.input.on('pointerdown', () => {
-            this.scene.start('Game');
-        });
+        const text = this.add.text(400, 250, 'Press SPACE to start', { fontSize: '32px', fill: '#fff' });
+        text.setOrigin(0.5, 0.5);
     }
 }
+
+export default TitleScreen;
