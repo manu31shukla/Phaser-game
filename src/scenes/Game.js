@@ -26,10 +26,10 @@ class Game extends Phaser.Scene{
         this.ball = 
         this.add.circle(400, 250, 10, Colors.white,  1);
         this.physics.add.existing(this.ball);
+        this.ball.body.setCircle(10);
         this.ball.body.setBounce(1,1);
 
         this.ball.body.setCollideWorldBounds(true,1, 1);
-        this.resetBall();
 
         //left paddle - player
         this.paddleLeft = this.add.rectangle(50, 250, 30, 100, Colors.white);
@@ -54,6 +54,11 @@ class Game extends Phaser.Scene{
 
         //keyboard controls allowed for player
         this.cursors = this.input.keyboard.createCursorKeys() 
+
+        //ball positioned at center of screen
+        this.time.delayedCall(1200, () => {
+            this.resetBall();
+        });
     }
 
     update(){
