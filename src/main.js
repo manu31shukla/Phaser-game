@@ -1,6 +1,7 @@
 import Phaser, { Physics } from 'phaser';
 import TitleScreen from './scenes/TitleScreen';
 import Game from './scenes/Game';
+import GameBackground from './scenes/GameBackground';
 
 const config = {
     width: 800,
@@ -19,6 +20,7 @@ const game = new Phaser.Game(config);
 
 game.scene.add('TitleScreen', TitleScreen);
 game.scene.add('game', Game);
+game.scene.add('game-background', GameBackground);
 
 // game.scene.start('TitleScreen');
 game.scene.start('game');

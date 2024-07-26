@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import WebFontFile from './WebFontLoader';
+import GameBackground from './GameBackground';
 
 class Game extends Phaser.Scene{
     init(){
@@ -15,6 +16,9 @@ class Game extends Phaser.Scene{
         this.load.addFile(fonts);
     }
     create(){
+        //background
+        this.scene.run('game-background');
+
         this.physics.world.setBounds(-100, 0, 1000, 500);
 
         //ball
