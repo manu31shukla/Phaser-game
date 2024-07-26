@@ -42,7 +42,7 @@ class TitleScreen extends Phaser.Scene {
                 fontFamily: '"Press Start 2P"' 
             }).setOrigin(0.5, 0.5); 
         
-        this.add.text(350, 360, '3. The game ends when the ball hits the bottom of the screen',
+        this.add.text(350, 360, '3. The game ends when either the player or computer scores 5 points',
             { 
                 fontSize: '18px', 
                 fill: '#fff',

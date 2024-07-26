@@ -1,15 +1,24 @@
 import Phaser from 'phaser';
 import WebFontFile from './WebFontLoader';
-import { GameBackground } from '../consts/SceneKeys';
+import { GameBackground, GameOver } from '../consts/SceneKeys';
 import * as Colors from '../consts/Colors';
+
+const GameState = {
+    PAUSED: 'PAUSED',
+    RUNNING: 'RUNNING',
+    PLAYER_WON: 'PLAYER_WON',
+    COMPUTER_WON: 'COMPUTER_WON',
+}
 
 class Game extends Phaser.Scene{
     init(){
+        this.GameState = GameState.RUNNING;
         //ball velocity inial value
         this.paddleRightVelocity = new Phaser.Math.Vector2(0,0);
         //score inial value
         this.scoreLeft = 0;
         this.scoreRight = 0;
+        this.paused = false;
     }
     preload(){
         //load font before game starts
@@ -62,6 +71,9 @@ class Game extends Phaser.Scene{
     }
 
     update(){
+        if (this.paused || this.GameState !== GameState.RUNNING) {
+            return;
+        }
         this.handlePlayerMovement();
         this.handleComputerMovement();
         this.updateScore();    
@@ -108,15 +120,40 @@ class Game extends Phaser.Scene{
 
     updateScore(){
         //ball movement and scoring
+        const x = this.ball.x;
+        const leftBounds = -30;
+        const rightBounds = 830;
+        if (x >= leftBounds && x <= rightBounds) {
+            return;        }
         if(this.ball.x < -30){
             //scored on left side
-            this.resetBall();
             this.updateComputerScore();
             }
             else if (this.ball.x > 830){
             //scored on right side
-            this.resetBall();
             this.updatePlayerScore();
+            }
+
+            const maxScore = 5;
+            if(this.scoreLeft >= maxScore){
+                this.GameState = GameState.PLAYER_WON;
+                this.paused = true;
+            }
+            else if (this.scoreRight >= maxScore){
+                this.GameState = GameState.COMPUTER_WON;
+                this.paused = true;
+            }
+            if(!this.paused){
+                this.resetBall();
+            }
+            else{
+                this.ball.active = false;
+                this.physics.world.remove(this.ball.body);
+                this.scene.stop(GameBackground);
+                this.scene.run(GameOver, {
+                    scoreLeft: this.scoreLeft,
+                    scoreRight: this.scoreRight
+                });
             }
     }
 
