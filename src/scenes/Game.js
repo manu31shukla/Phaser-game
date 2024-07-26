@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import WebFontFile from './WebFontLoader';
 import { GameBackground } from '../consts/SceneKeys';
+import * as Colors from '../consts/Colors';
 
 class Game extends Phaser.Scene{
     init(){
@@ -23,7 +24,7 @@ class Game extends Phaser.Scene{
 
         //ball
         this.ball = 
-        this.add.circle(400, 250, 10, 0xffffff,  1);
+        this.add.circle(400, 250, 10, Colors.white,  1);
         this.physics.add.existing(this.ball);
         this.ball.body.setBounce(1,1);
 
@@ -31,12 +32,12 @@ class Game extends Phaser.Scene{
         this.resetBall();
 
         //left paddle - player
-        this.paddleLeft = this.add.rectangle(50, 250, 30, 100, 0xffffff);
+        this.paddleLeft = this.add.rectangle(50, 250, 30, 100, Colors.white);
         this.physics.add.existing(this.paddleLeft, true);
         this.physics.add.collider(this.ball, this.paddleLeft);
 
         //right paddle - computer
-        this.paddleRight= this.add.rectangle(750, 250, 30, 100, 0xffffff, 1);
+        this.paddleRight= this.add.rectangle(750, 250, 30, 100, Colors.white, 1);
         this.physics.add.existing(this.paddleRight, true);
         this.physics.add.collider(this.ball, this.paddleRight);
 
