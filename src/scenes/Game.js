@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import WebFontFile from './WebFontLoader';
 
 class Game extends Phaser.Scene{
     init(){
@@ -9,7 +10,9 @@ class Game extends Phaser.Scene{
         this.scoreRight = 0;
     }
     preload(){
-
+        //load font before game starts
+        const fonts = new WebFontFile(this.load, 'Press Start 2P');
+        this.load.addFile(fonts);
     }
     create(){
         this.physics.world.setBounds(-100, 0, 1000, 500);
@@ -36,7 +39,8 @@ class Game extends Phaser.Scene{
         //score mechanics
         const scoreStyle = {
             fontSize: 48,
-            color: '#ffffff'
+            color: '#ffffff',
+            fontFamily: '"Press Start 2P"'
         }
         this.scoreLeftText = this.add.text(300, 50, '0', scoreStyle)
         .setOrigin(0.5, 0.5);
