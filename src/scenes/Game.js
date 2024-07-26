@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import WebFontFile from './WebFontLoader';
-import GameBackground from './GameBackground';
+import { GameBackground } from '../consts/SceneKeys';
 
 class Game extends Phaser.Scene{
     init(){
@@ -17,7 +17,7 @@ class Game extends Phaser.Scene{
     }
     create(){
         //background
-        this.scene.run('game-background');
+        this.scene.run(GameBackground);
 
         this.physics.world.setBounds(-100, 0, 1000, 500);
 
