@@ -1,6 +1,9 @@
 import Phaser from 'phaser';
 
 class Game extends Phaser.Scene{
+    init(){
+        this.paddleRightVelocity = new Phaser.Math.Vector2(0,0);
+    }
     preload(){
 
     }
@@ -34,17 +37,27 @@ class Game extends Phaser.Scene{
             this.paddleLeft.y += 10;     
             this.paddleLeft.body.updateFromGameObject();  
         } 
+        const CodedSpeed = 5;
         const diff = this.ball.y - this.paddleRight.y;
-        if(diff<10){
-            //ball is below paddle  
-            this.paddleRight.y -= 10;
-            this.paddleRight.body.updateFromGameObject();
+        if (Math.abs(diff) < 10) {
+            return;
+        }   
+        if(diff<0){
+            //ball is above paddle  
+            this.paddleRightVelocity.y = -CodedSpeed;
+            if (this.paddleRightVelocity.y < -10) {
+                this.paddleRightVelocity.y = -10;
+            }
         }
-        else if(diff>10){
-            //ball is above paddle
-            this.paddleRight.y += 10;
-            this.paddleRight.body.updateFromGameObject();
+        else if(diff>0){
+            //ball is below paddle
+            this.paddleRightVelocity.y = CodedSpeed;
+            if (this.paddleRightVelocity.y > 10) {
+                this.paddleRightVelocity.y = 10;
+            }
         }
+        this.paddleRight.y += this.paddleRightVelocity.y;
+        this.paddleRight.body.updateFromGameObject();
     }
 }
     
