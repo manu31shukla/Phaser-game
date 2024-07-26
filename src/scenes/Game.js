@@ -56,6 +56,13 @@ class Game extends Phaser.Scene{
     }
 
     update(){
+        this.handlePlayerMovement();
+        this.handleComputerMovement();
+        this.updateScore();    
+        
+    }
+
+    handlePlayerMovement(){
         //player movement
         if(this.cursors.up.isDown){
             this.paddleLeft.y -= 10;     
@@ -65,6 +72,9 @@ class Game extends Phaser.Scene{
             this.paddleLeft.y += 10;     
             this.paddleLeft.body.updateFromGameObject();  
         } 
+    }
+
+    handleComputerMovement(){
         //computer movement
         const CodedSpeed = 5;
         const diff = this.ball.y - this.paddleRight.y;
@@ -87,18 +97,21 @@ class Game extends Phaser.Scene{
         }
         this.paddleRight.y += this.paddleRightVelocity.y;
         this.paddleRight.body.updateFromGameObject();
-    
+
+    }
+
+    updateScore(){
         //ball movement and scoring
         if(this.ball.x < -30){
-        //scored on left side
-        this.resetBall();
-        this.updateComputerScore();
-        }
-        else if (this.ball.x > 830){
-        //scored on right side
-        this.resetBall();
-        this.updatePlayerScore();
-        }
+            //scored on left side
+            this.resetBall();
+            this.updateComputerScore();
+            }
+            else if (this.ball.x > 830){
+            //scored on right side
+            this.resetBall();
+            this.updatePlayerScore();
+            }
     }
 
     updatePlayerScore(){

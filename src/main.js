@@ -24,4 +24,4 @@ game.scene.add(SceneKeys.Game, Game);
 game.scene.add(SceneKeys.GameBackground, GameBackground);
 
 // game.scene.start('TitleScreen');
-game.scene.start(SceneKeys.GameBackground);
+game.scene.start(SceneKeys.Game);
