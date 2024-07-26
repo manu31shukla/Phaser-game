@@ -23,15 +23,14 @@ class Game extends Phaser.Scene{
     }
 
     update(){
-        // /** @type {Phaser.Physics.Arcade.StaticBody} */
-        // const body = this.paddleLeft.body;
-
         if(this.cursors.up.isDown){
             this.paddleLeft.y -= 10;     
-            console.log("up");   }
+            this.paddleLeft.body.updateFromGameObject();  
+        }
         else if(this.cursors.down.isDown){
-            this.paddleLeft.y += 10;        
-            console.log("down");   }
+            this.paddleLeft.y += 10;     
+            this.paddleLeft.body.updateFromGameObject();  
+        } 
     }
 }
     
