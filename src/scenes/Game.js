@@ -2,7 +2,11 @@ import Phaser from 'phaser';
 
 class Game extends Phaser.Scene{
     init(){
+        //ball velocity inial value
         this.paddleRightVelocity = new Phaser.Math.Vector2(0,0);
+        //score inial value
+        this.scoreLeft = 0;
+        this.scoreRight = 0;
     }
     preload(){
 
@@ -30,17 +34,15 @@ class Game extends Phaser.Scene{
         this.physics.add.collider(this.ball, this.paddleRight);
 
         //score mechanics
-        this.scoreLeft = this.add.text(300, 50, '0', {
+        const scoreStyle = {
             fontSize: 48,
             color: '#ffffff'
-        })
+        }
+        this.scoreLeftText = this.add.text(300, 50, '0', scoreStyle)
         .setOrigin(0.5, 0.5);
-        this.scoreRight = this.add.text(500, 50, '0', {
-            fontSize: 48,
-            color: '#ffffff'
-        })
+        this.scoreRightText = this.add.text(500, 50, '0', scoreStyle)
         .setOrigin(0.5, 0.5);
-        
+
         //keyboard controls allowed for player
         this.cursors = this.input.keyboard.createCursorKeys() 
     }
@@ -82,12 +84,25 @@ class Game extends Phaser.Scene{
         if(this.ball.x < -30){
         //scored on left side
         this.resetBall();
+        this.updateComputerScore();
         }
         else if (this.ball.x > 830){
         //scored on right side
         this.resetBall();
+        this.updatePlayerScore();
         }
     }
+
+    updatePlayerScore(){
+        this.scoreLeft++;
+        this.scoreLeftText.text = this.scoreLeft;
+    }
+
+    updateComputerScore(){
+        this.scoreRight++;
+        this.scoreRightText.text = this.scoreRight;
+    }
+
     resetBall(){
         //reset ball position and velocity
         this.ball.setPosition(400, 250);
