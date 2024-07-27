@@ -19,4 +19,4 @@ A classic Pong game built using Phaser 3. This game features responsive design, 
 
 ## Demo Video
 
-[Watch the Demo Video](./src/assets/video_recording.gif)
+![Phaser Pong Game Demo](https://raw.githubusercontent.com/manu31shukla/Phaser-game/main/src/assets/video_recording.gif)
