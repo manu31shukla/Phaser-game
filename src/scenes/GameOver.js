@@ -11,7 +11,7 @@ class GameOver extends Phaser.Scene {
         this.add.text(width * 0.5, height * 0.5, 'Game Over', {
             fontSize: '48px',
             fontFamily: '"Press Start 2P"',
-            color: '#ffffff'
+            color: '#ffffff' 
         }).setOrigin(0.5);
 
         if(data.scoreLeft > data.scoreRight) {

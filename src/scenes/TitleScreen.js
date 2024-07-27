@@ -1,19 +1,22 @@
-import Phaser, { Scene } from 'phaser';
+import Phaser from 'phaser';
 import * as SceneKeys from '../consts/SceneKeys';
+import WebFontFile from './WebFontLoader';
 class TitleScreen extends Phaser.Scene {
 
     preload() {
-    }
+        const fonts = new WebFontFile(this.load, 'Press Start 2P');
+        this.load.addFile(fonts);
+    } 
 
     create() {
         const { width, height } = this.scale;
 
-        const text = this.add.text(width * 0.5, height * 0.3, 'Press SPACE to start', 
+        this.add.text(width * 0.5, height * 0.3, 'Press SPACE to start', 
             { 
                 fontSize: '42px', 
-                fontFamily: '"Press Start 2P"' 
-            });
-        text.setOrigin(0.5, 0.5);
+                fontFamily: '"Press Start 2P"',
+                color: '#ffffff' 
+            }).setOrigin(0.5, 0.5);
 
         this.add.text(width * 0.5, height * 0.4, 'Use arrow keys to move paddle', 
             { 

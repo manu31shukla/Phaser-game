@@ -29,7 +29,7 @@ class Game extends Phaser.Scene{
         //background
         this.scene.run(GameBackground);
 
-        this.physics.world.setBounds(-100, 0, 1500, 700);
+        this.physics.world.setBounds(-100, 0, 1600, 700);
 
         //ball
         this.ball = 
@@ -56,9 +56,9 @@ class Game extends Phaser.Scene{
             color: '#ffffff',
             fontFamily: '"Press Start 2P"'
         }
-        this.scoreLeftText = this.add.text(650, 50, '0', scoreStyle)
+        this.scoreLeftText = this.add.text(650, 100, '0', scoreStyle)
         .setOrigin(0.5, 0.5);
-        this.scoreRightText = this.add.text(850, 50, '0', scoreStyle)
+        this.scoreRightText = this.add.text(850, 100, '0', scoreStyle)
         .setOrigin(0.5, 0.5);
 
         //keyboard controls allowed for player
