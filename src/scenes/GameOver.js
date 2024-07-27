@@ -36,7 +36,8 @@ class GameOver extends Phaser.Scene {
         }).setOrigin(0.5);
 
         this.input.keyboard.once('keydown-SPACE', () => {
-            this.scene.start('game');
+            // this.sound.play(AudioKeys.PongBeep);
+            this.scene.start(SceneKeys.Game);
         });
     }
 }

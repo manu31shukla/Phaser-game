@@ -28,6 +28,7 @@ class Game extends Phaser.Scene{
         //load music 
         this.load.audio(AudioKeys.PongBeep, 'assets/ping_pong_8bit_beeep.ogg');
         this.load.audio(AudioKeys.PaddleBeep, 'assets/ping_pong_8bit_plop.ogg');
+        this.load.audio(AudioKeys.PingBeep, 'assets/ping_pong_8bit_peeeeeep.ogg');
     }
     create(){
         //background
@@ -163,6 +164,8 @@ class Game extends Phaser.Scene{
                     scoreLeft: this.scoreLeft,
                     scoreRight: this.scoreRight
                 });
+                this.sound.play(AudioKeys.PingBeep);
+
             }
     }
 
