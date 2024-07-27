@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import WebFontFile from './WebFontLoader';
 import { GameBackground, GameOver } from '../consts/SceneKeys';
 import * as Colors from '../consts/Colors';
+import * as AudioKeys from '../consts/AudioKeys';
 
 const GameState = {
     PAUSED: 'PAUSED',
@@ -24,6 +25,9 @@ class Game extends Phaser.Scene{
         //load font before game starts
         const fonts = new WebFontFile(this.load, 'Press Start 2P');
         this.load.addFile(fonts);
+        //load music 
+        this.load.audio(AudioKeys.PongBeep, 'assets/ping_pong_8bit_beeep.ogg');
+        this.load.audio(AudioKeys.PaddleBeep, 'assets/ping_pong_8bit_plop.ogg');
     }
     create(){
         //background
