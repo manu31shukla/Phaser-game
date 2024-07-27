@@ -29,7 +29,7 @@ class Game extends Phaser.Scene{
         //background
         this.scene.run(GameBackground);
 
-        this.physics.world.setBounds(-100, 0, 1600, 700);
+        this.physics.world.setBounds(-200, 0, 1800, 700);
 
         //ball
         this.ball = 
@@ -94,7 +94,7 @@ class Game extends Phaser.Scene{
 
     handleComputerMovement(){
         //computer movement
-        const CodedSpeed = 5;
+        const CodedSpeed = 3.5;
         const diff = this.ball.y - this.paddleRight.y;
         if (Math.abs(diff) < 10) {
             return;
@@ -122,14 +122,14 @@ class Game extends Phaser.Scene{
         //ball movement and scoring
         const x = this.ball.x;
         const leftBounds = -30;
-        const rightBounds = 1530;
+        const rightBounds = 1500;
         if (x >= leftBounds && x <= rightBounds) {
             return;        }
         if(this.ball.x < -30){
             //scored on left side
             this.updateComputerScore();
             }
-            else if (this.ball.x > 1530){
+            else if (this.ball.x > 1500){
             //scored on right side
             this.updatePlayerScore();
             }
@@ -137,13 +137,13 @@ class Game extends Phaser.Scene{
             const maxScore = 5;
             if(this.scoreLeft >= maxScore){
                 this.GameState = GameState.PLAYER_WON;
-                this.paused = true;
+                // this.paused = true;
             }
             else if (this.scoreRight >= maxScore){
                 this.GameState = GameState.COMPUTER_WON;
-                this.paused = true;
+                // this.paused = true;
             }
-            if(!this.paused){
+            if(this.GameState === GameState.RUNNING){
                 this.resetBall();
             }
             else{
@@ -171,7 +171,7 @@ class Game extends Phaser.Scene{
         //reset ball position and velocity
         this.ball.setPosition(750, 350);
         const angle = Phaser.Math.Between(0, 360);
-        const vec = this.physics.velocityFromAngle(angle, 300);
+        const vec = this.physics.velocityFromAngle(angle, 700);
         this.ball.body.setVelocity(vec.x, vec.y);
     }
 
