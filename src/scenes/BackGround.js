@@ -1,4 +1,3 @@
-// src/scenes/BackGround.js
 import Phaser from 'phaser';
 import * as SceneKeys from '../consts/SceneKeys';
 
@@ -8,19 +7,11 @@ class BackGround extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('background', 'assets/background.png'); 
-        console.log('Background image loading...');
+        this.load.image('background', 'assets/background.jpg'); 
     }
 
     create() {
-        console.log('Creating BackGround scene...');
-
-        const background = this.add.image(750, 350, 'background').setOrigin(0.5, 0.5);
-        if (background) {
-            console.log('Background image added successfully');
-        } else {
-            console.log('Failed to add background image');
-        }
+        this.add.image(750, 350, 'background').setOrigin(0.5, 0.5).setAlpha(0.5);;
     }
 }
 
