@@ -47,12 +47,12 @@ class Game extends Phaser.Scene{
         //left paddle - player
         this.paddleLeft = this.add.rectangle(50, 350, 35, 150, Colors.white);
         this.physics.add.existing(this.paddleLeft, true);
-        this.physics.add.collider(this.ball, this.paddleLeft);
+        this.physics.add.collider(this.ball, this.paddleLeft, this.handlePaddleCollison, undefined, this);
 
         //right paddle - computer
         this.paddleRight= this.add.rectangle(1450, 250, 35, 150, Colors.white, 1);
         this.physics.add.existing(this.paddleRight, true);
-        this.physics.add.collider(this.ball, this.paddleRight);
+        this.physics.add.collider(this.ball, this.paddleRight, this.handlePaddleCollison, undefined, this);
 
         //score mechanics
         const scoreStyle = {
@@ -82,6 +82,11 @@ class Game extends Phaser.Scene{
         this.handleComputerMovement();
         this.updateScore();    
         
+    }
+
+    handlePaddleCollison(){
+        //ball collision with paddles
+        this.sound.play(AudioKeys.PaddleBeep);
     }
 
     handlePlayerMovement(){

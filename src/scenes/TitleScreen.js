@@ -1,12 +1,17 @@
 import Phaser from 'phaser';
 import * as SceneKeys from '../consts/SceneKeys';
 import WebFontFile from './WebFontLoader';
+import * as AudioKeys from '../consts/AudioKeys';
 class TitleScreen extends Phaser.Scene {
-
-    preload() {
+    
+    preload(){
+        //load font before game starts
         const fonts = new WebFontFile(this.load, 'Press Start 2P');
         this.load.addFile(fonts);
-    } 
+        //load music 
+        this.load.audio(AudioKeys.PongBeep, 'assets/ping_pong_8bit_beeep.ogg');
+        this.load.audio(AudioKeys.PaddleBeep, 'assets/ping_pong_8bit_plop.ogg');
+    }
 
     create() {
         const { width, height } = this.scale;
@@ -49,6 +54,7 @@ class TitleScreen extends Phaser.Scene {
             }).setOrigin(0.5, 0.5);
 
         this.input.keyboard.once('keydown-SPACE', () => {
+            this.sound.play(AudioKeys.PongBeep);
             this.scene.start(SceneKeys.Game);
         });
     }
