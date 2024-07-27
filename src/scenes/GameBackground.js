@@ -5,9 +5,9 @@ class GameBackground extends Phaser.Scene{
     preload(){  
     }
     create(){
-        this.add.line(400, 250, 0, 0, 0, 500, Colors.white, 1)
+        this.add.line(750, 350, 0, 0, 0, 700, Colors.white, 1)
         .setLineWidth(5, 5);
-        this.add.circle(400, 250, 50)
+        this.add.circle(750, 350, 100)
         .setStrokeStyle(5, Colors.white);
     }
 }

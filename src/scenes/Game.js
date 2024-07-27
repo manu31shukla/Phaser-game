@@ -29,24 +29,24 @@ class Game extends Phaser.Scene{
         //background
         this.scene.run(GameBackground);
 
-        this.physics.world.setBounds(-100, 0, 1000, 500);
+        this.physics.world.setBounds(-100, 0, 1500, 700);
 
         //ball
         this.ball = 
-        this.add.circle(400, 250, 10, Colors.white,  1);
+        this.add.circle(750, 350, 20, Colors.white,  1);
         this.physics.add.existing(this.ball);
-        this.ball.body.setCircle(10);
+        this.ball.body.setCircle(20);
         this.ball.body.setBounce(1,1);
 
         this.ball.body.setCollideWorldBounds(true,1, 1);
 
         //left paddle - player
-        this.paddleLeft = this.add.rectangle(50, 250, 30, 100, Colors.white);
+        this.paddleLeft = this.add.rectangle(50, 350, 35, 150, Colors.white);
         this.physics.add.existing(this.paddleLeft, true);
         this.physics.add.collider(this.ball, this.paddleLeft);
 
         //right paddle - computer
-        this.paddleRight= this.add.rectangle(750, 250, 30, 100, Colors.white, 1);
+        this.paddleRight= this.add.rectangle(1450, 250, 35, 150, Colors.white, 1);
         this.physics.add.existing(this.paddleRight, true);
         this.physics.add.collider(this.ball, this.paddleRight);
 
@@ -56,9 +56,9 @@ class Game extends Phaser.Scene{
             color: '#ffffff',
             fontFamily: '"Press Start 2P"'
         }
-        this.scoreLeftText = this.add.text(300, 50, '0', scoreStyle)
+        this.scoreLeftText = this.add.text(650, 50, '0', scoreStyle)
         .setOrigin(0.5, 0.5);
-        this.scoreRightText = this.add.text(500, 50, '0', scoreStyle)
+        this.scoreRightText = this.add.text(850, 50, '0', scoreStyle)
         .setOrigin(0.5, 0.5);
 
         //keyboard controls allowed for player
@@ -83,11 +83,11 @@ class Game extends Phaser.Scene{
     handlePlayerMovement(){
         //player movement
         if(this.cursors.up.isDown){
-            this.paddleLeft.y -= 10;     
+            this.paddleLeft.y -= 15;     
             this.paddleLeft.body.updateFromGameObject();  
         }
         else if(this.cursors.down.isDown){
-            this.paddleLeft.y += 10;     
+            this.paddleLeft.y += 15;     
             this.paddleLeft.body.updateFromGameObject();  
         } 
     }
@@ -122,14 +122,14 @@ class Game extends Phaser.Scene{
         //ball movement and scoring
         const x = this.ball.x;
         const leftBounds = -30;
-        const rightBounds = 830;
+        const rightBounds = 1530;
         if (x >= leftBounds && x <= rightBounds) {
             return;        }
         if(this.ball.x < -30){
             //scored on left side
             this.updateComputerScore();
             }
-            else if (this.ball.x > 830){
+            else if (this.ball.x > 1530){
             //scored on right side
             this.updatePlayerScore();
             }
@@ -169,7 +169,7 @@ class Game extends Phaser.Scene{
 
     resetBall(){
         //reset ball position and velocity
-        this.ball.setPosition(400, 250);
+        this.ball.setPosition(750, 350);
         const angle = Phaser.Math.Between(0, 360);
         const vec = this.physics.velocityFromAngle(angle, 300);
         this.ball.body.setVelocity(vec.x, vec.y);

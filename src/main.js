@@ -6,8 +6,8 @@ import GameOver from './scenes/GameOver';
 import * as SceneKeys from './consts/SceneKeys';
 
 const config = {
-    width: 800,
-    height: 500,
+    width: 1500,
+    height: 700,
     type: Phaser.AUTO,
     physics: {
         default: 'arcade',
@@ -25,5 +25,5 @@ game.scene.add(SceneKeys.Game, Game);
 game.scene.add(SceneKeys.GameBackground, GameBackground);
 game.scene.add(SceneKeys.GameOver, GameOver);
 
-game.scene.start(SceneKeys.TitleScreen);
-// game.scene.start(SceneKeys.Game);
+// game.scene.start(SceneKeys.TitleScreen);
+game.scene.start(SceneKeys.Game);
