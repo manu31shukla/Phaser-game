@@ -21,7 +21,7 @@ This Pong game is implemented using Phaser 3, a popular framework for creating H
 ## Demo
 Watch the video demo of the game:
 
-[![Watch the video](assets/video_recording.mp4)]
+[![Watch the video](public/assets/Demo-video.mp4)]
 
 ## Features
 
