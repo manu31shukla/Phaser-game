@@ -164,7 +164,7 @@ class Game extends Phaser.Scene{
                     scoreLeft: this.scoreLeft,
                     scoreRight: this.scoreRight
                 });
-                this.sound.play(AudioKeys.PingBeep);
+                // this.sound.play(AudioKeys.PingBeep);
 
             }
     }

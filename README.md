@@ -21,7 +21,7 @@ This Pong game is implemented using Phaser 3, a popular framework for creating H
 ## Demo
 Watch the video demo of the game:
 
-[![Watch the video](public/assets/Demo-video.mp4)]
+[![Watch the video](public/assets/Demo-video.gif)]
 
 ## Features
 
@@ -56,9 +56,8 @@ To get started with this project, follow these steps:
 
 ## Usage
 
-To run the game locally, use the following command:
-
-    ```bash
+    To run the game locally, use the following command:
+    ```sh
     npm run start
     ```
 This command will start a local development server and open the game in your default web browser.
