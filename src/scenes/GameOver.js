@@ -1,4 +1,6 @@
 import Phaser from 'phaser';
+import * as SceneKeys from '../consts/SceneKeys';
+import * as AudioKeys from '../consts/AudioKeys';
 
 class GameOver extends Phaser.Scene {
     constructor() {
@@ -36,7 +38,9 @@ class GameOver extends Phaser.Scene {
         }).setOrigin(0.5);
 
         this.input.keyboard.once('keydown-SPACE', () => {
-            // this.sound.play(AudioKeys.PongBeep);
+            console.log('Space key pressed');
+
+            this.sound.play(AudioKeys.PongBeep);
             this.scene.start(SceneKeys.Game);
         });
     }
