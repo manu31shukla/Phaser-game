@@ -13,7 +13,7 @@ A classic Pong game built with Phaser 3, showcasing a basic implementation of 2D
 
 ## Project Description
 
-This Pong game is implemented using Phaser 3, a popular framework for creating HTML5 games. It includes a player paddle controlled by the arrow keys, a computer paddle with simple AI, and a ball that bounces off the paddles and screen edges. The game tracks scores and determines a winner when a player reaches a maximum score. This game uses Phaser 3(a library of javascript) for development.
+This Pong game is implemented using Phaser 3, a popular framework for creating HTML5 games. It includes a player paddle controlled by the arrow keys, a computer paddle with simple AI, and a ball that bounces off the paddles and screen edges. The game tracks scores and determines a winner when a player reaches a maximum score.
 
 ## Hosted Link
 [Score if you Can!](https://score-if-you-can.netlify.app/)
@@ -21,7 +21,7 @@ This Pong game is implemented using Phaser 3, a popular framework for creating H
 ## Demo
 Watch the video demo of the game:
 
-[![Watch the video](assets/Demo-video.mp4)]
+[![Watch the video](assets/video_recording.mp4)]
 
 ## Features
 
